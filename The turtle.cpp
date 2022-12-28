@@ -20,7 +20,7 @@ float b2_speed = 5;
 int counter = 0;
 #define PI 3.1416
 void circle(GLdouble rad);
-void drawText(const char* text, int x, int y,int r,int g,int b );
+
 
 //done
 float xr = 0, yr = 0;
@@ -30,8 +30,14 @@ void specialkey(int key, int x, int y)
 	switch (key) {
 	case GLUT_KEY_UP: //when the UP key pressed
 		if (yr < 380) {
-			yr = yr + 15;
+			if((xr <= 200 && xr>= -400) && (yr == 15)){
+			
+			}else{
+						yr = yr + 15;
 			glutPostRedisplay();
+			}
+
+
 
 		}else{
 		
@@ -46,12 +52,19 @@ void specialkey(int key, int x, int y)
 
 		break;
 	case GLUT_KEY_LEFT:  //when the LEFT key pressed
-		xr = xr - 10;
+		if(xr>-420){
+				xr = xr - 15;
 		glutPostRedisplay();
+		}
+
 		break;
 	case GLUT_KEY_RIGHT: //when the RIGHT key pressed
-		xr = xr + 10;
+		
+		if(xr<250){
+		xr = xr + 15;
 		glutPostRedisplay();
+		}
+
 		break;
 	}
 }
@@ -234,11 +247,16 @@ void starting(int a ,int b ,int c,int d)
 
 void drowLol()
 {
+	starting(0,0,450,20);//down straite line
+	starting(0,460,450,480);//up straite line
+	starting(130,355,320,370);
+	starting(130,200,320,215);
 	starting(0,270,10,480);//شمال فوق
 	starting(0,0,10,160);//شمال تحت
 	starting(440,480,450,0);//يمين
-
 	starting(120,200,130,370);
+
+
 
 
 
@@ -265,7 +283,7 @@ int main(int argc, char** argv)
 {
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
-	glutInitWindowSize(800, 600);
+	glutInitWindowSize(750, 600);
 	glutCreateWindow("The Survivor Turtle Game");
 	glutDisplayFunc(display);
 	myInit();
